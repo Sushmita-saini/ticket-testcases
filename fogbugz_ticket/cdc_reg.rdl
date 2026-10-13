@@ -1,0 +1,23 @@
+property module_name {type =string; component = addrmap ; };
+property reset_type {type =string; component = addrmap|reg|field ; };
+property cdc_clock {type =string; component = reg | field; };  
+property registered {type =string; component = reg | field ; };
+property widget {type = string; component = addrmap ; };
+
+
+addrmap blk1 {
+    module_name = "blk1" ;
+    reset_type = "async" ;
+    widget = "apb:ff:apb_widget" ;
+
+
+    reg reg1{
+        field {
+            cdc_clock = "hw_clk" ;
+            registered = "false" ;
+            hw = rw;
+            sw = rw;
+        } f1[31:0] = 0;
+    };
+    reg1 reg_sw_rw_hw_rw @0x0;
+};
